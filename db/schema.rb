@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_04_084910) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_04_124353) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actor_movies", force: :cascade do |t|
+    t.bigint "actor_id"
+    t.bigint "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actor_id"], name: "index_actor_movies_on_actor_id"
+    t.index ["movie_id"], name: "index_actor_movies_on_movie_id"
+  end
 
   create_table "actors", force: :cascade do |t|
     t.string "name"
@@ -50,4 +59,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_04_084910) do
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
+  add_foreign_key "actor_movies", "actors"
+  add_foreign_key "actor_movies", "movies"
+  add_foreign_key "movies", "categories"
 end
