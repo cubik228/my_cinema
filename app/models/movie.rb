@@ -5,4 +5,6 @@ class Movie < ApplicationRecord
   validates :release_year, presence: true
   validates :description, presence: true
   validates :rating, presence: true
+
+  accepts_nested_attributes_for :actors
 end

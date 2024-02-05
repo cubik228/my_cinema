@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :movies
+  resources :movies do
+    get 'actors', on: :member
+  end
   resources :actors
+  resources :categories 
 end

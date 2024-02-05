@@ -6,6 +6,14 @@ class MoviesController < ApplicationController
     render json: @movies
   end
 
+  def actors
+    movie = Movie.find(params[:id])
+    actors = movie.actors
+
+    render json: actors
+  end
+  
+
   def new 
     @movie = Movie.new
   end
@@ -43,7 +51,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
   end
 
-  def movie_params
-    params.require(:movie).permit(:title, :release_year, :description, :rating, :category_id)
+ def movie_params
+    params.require(:movie).permit(:title, :release_year, :description, :rating, :category_id, actors_attributes: [:name])
   end
 end
