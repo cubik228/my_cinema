@@ -8,12 +8,13 @@ gem "puma", ">= 5.0"
 # gem "jbuilder"
 # gem "redis", ">= 4.0.1"
 gem 'devise'
+gem 'devise-jwt'
 # gem "kredis"
 # gem "bcrypt", "~> 3.1.7"
 
 gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
-# gem "rack-cors"
+gem "rack-cors"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]

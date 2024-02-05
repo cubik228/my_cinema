@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_04_124353) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_05_144219) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,23 +24,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_04_124353) do
   end
 
   create_table "actors", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_categories_on_name", unique: true
   end
 
   create_table "movies", force: :cascade do |t|
-    t.string "title"
-    t.integer "release_year"
-    t.text "description"
-    t.float "rating"
-    t.integer "category_id"
+    t.string "title", null: false
+    t.integer "release_year", null: false
+    t.text "description", null: false
+    t.float "rating", null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,7 +55,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_04_124353) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "jti", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["token"], name: "index_users_on_token", unique: true
   end
