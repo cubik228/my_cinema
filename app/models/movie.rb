@@ -8,14 +8,22 @@ class Movie < ApplicationRecord
   validates :rating, presence: true
 
   accepts_nested_attributes_for :actors
+  accepts_nested_attributes_for :producers
 
   validate :actors_presence
+  validate :producers_presence
 
   private
 
   def actors_presence
     if actors.empty?
       errors.add(:actors, "must be present")
+    end
+  end
+
+  def producers_presence
+    if producers.empty?
+      errors.add(:producers, "must be present")
     end
   end
 end
