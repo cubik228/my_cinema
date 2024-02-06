@@ -16,6 +16,7 @@ gem "bootsnap", require: false
 gem "rack-cors"
 
 group :development, :test do
+  gem 'shoulda-matchers'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
