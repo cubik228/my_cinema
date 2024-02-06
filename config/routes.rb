@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   resources :movies do
     get 'actors', on: :member
   end
+  
   resources :actors
+  resources :producers
   resources :categories 
+
   get '/actors/:id/movies', to: 'actors#movies'
 end
