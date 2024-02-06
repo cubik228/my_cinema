@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   end
   resources :actors
   resources :categories 
+  get '/actors/:id/movies', to: 'actors#movies'
 end
