@@ -12,6 +12,7 @@ class ProducersController < ApplicationController
     render json: @movies
   end
   
+  
   def new
     @producer = Producer.new
   end
