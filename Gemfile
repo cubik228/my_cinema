@@ -10,13 +10,14 @@ gem "puma", ">= 5.0"
 gem 'devise'
 gem 'devise-jwt'
 # gem "kredis"
-# gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.7"
 
 gem "bootsnap", require: false
-# gem "image_processing", "~> 1.2"
 gem "rack-cors"
 
 group :development, :test do
+  gem 'rspec-rails'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
 end
 
