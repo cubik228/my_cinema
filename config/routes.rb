@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :movies do
     get 'actors', on: :member
+    get 'producers', on: :member
   end
   
   resources :actors
