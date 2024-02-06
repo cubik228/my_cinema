@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :categories 
 
   get '/actors/:id/movies', to: 'actors#movies'
+  get '/producers/:id/movies', to: 'producers#movies'
 end
