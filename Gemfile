@@ -16,6 +16,7 @@ gem "bootsnap", require: false
 gem "rack-cors"
 
 group :development, :test do
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
   gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
