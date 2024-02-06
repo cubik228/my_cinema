@@ -6,6 +6,12 @@ class ActorsController < ApplicationController
     render json: @actors
   end
 
+  def movies
+    @actor = Actor.find(params[:id])
+    @movies = @actor.movies
+    render json: @movies
+  end
+  
   def new
     @actor = Actor.new
   end
