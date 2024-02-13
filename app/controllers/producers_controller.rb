@@ -1,3 +1,6 @@
+require_relative '../reports/base_reports'
+require_relative '../reports/producers_report'
+
 class ProducersController < ApplicationController
   before_action :set_producer, only: %i[show update destroy]
 
@@ -12,6 +15,14 @@ class ProducersController < ApplicationController
     render json: @movies
   end
   
+  def report_to_excel
+    producers = Producer.all
+    producers_report = ProducersReport.new(nil)
+    producers_report.generate_report(producers)
+    producers_report.export_to_excel('producers_report.xlsx')
+
+    render json: { message: 'producers report has been generated and exported to Excel' }
+  end
   
   def new
     @producer = Producer.new

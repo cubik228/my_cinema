@@ -1,3 +1,6 @@
+require_relative '../reports/base_reports'
+require_relative '../reports/actros_report'
+
 class ActorsController < ApplicationController
   before_action :set_actor, only: %i[show update destroy]
 
@@ -12,6 +15,15 @@ class ActorsController < ApplicationController
     render json: @movies
   end
   
+  def report_to_excel
+    actors = Actor.all
+    actors_report = ActorsReport.new(nil)
+    actors_report.generate_report(actors)
+    actors_report.export_to_excel('actors_report.xlsx')
+
+    render json: { message: 'actors report has been generated and exported to Excel' }
+  end
+
   def new
     @actor = Actor.new
   end

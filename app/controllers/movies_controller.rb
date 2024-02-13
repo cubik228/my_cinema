@@ -1,3 +1,7 @@
+require_relative '../reports/base_reports'
+require_relative '../reports/movies_report'
+
+
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[show update destroy]
 
@@ -20,6 +24,14 @@ class MoviesController < ApplicationController
     render json: producers
   end
   
+  def report_to_excel
+    movies = Movie.all
+    movies_report = MoviesReport.new(nil)
+    movies_report.generate_report(movies)
+    movies_report.export_to_excel('movies_report.xlsx')
+
+    render json: { message: 'Movies report has been generated and exported to Excel' }
+  end
 
   def new 
     @movie = Movie.new
