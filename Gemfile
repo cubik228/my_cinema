@@ -11,9 +11,10 @@ gem 'devise'
 gem 'devise-jwt'
 # gem "kredis"
 gem "bcrypt", "~> 3.1.7"
-
+gem 'axlsx'
 gem "bootsnap", require: false
 gem "rack-cors"
+gem 'xlsx_writer'
 
 group :development, :test do
   gem 'shoulda-matchers'

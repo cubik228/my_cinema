@@ -1,9 +1,21 @@
+require_relative '../reports/base_reports'
+require_relative '../reports/categories_reports'
+
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[show update destroy]
 
   def index
     @categories = Category.all
     render json: @categories
+  end
+
+  def report_to_excel
+    categories = Category.all
+    categories_report = CategoriesReport.new(nil)
+    categories_report.generate_report(categories)
+    categories_report.export_to_excel('categories_report.xlsx')
+
+    render json: { message: 'Movies report has been generated and exported to Excel' }
   end
 
   def new
