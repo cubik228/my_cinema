@@ -5,9 +5,14 @@ Rails.application.routes.draw do
   }
 
   resources :movies do
-    get 'actors', on: :member
-    get 'producers', on: :member
-    get 'report_to_excel', on: :collection
+    member do
+      get 'actors'
+      get 'producers'
+    end
+    collection do
+      get 'report_to_excel'
+      get 'rating', to: 'movies#rating'
+    end
   end
   
   resources :actors do 
