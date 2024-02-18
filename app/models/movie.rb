@@ -2,6 +2,9 @@ class Movie < ApplicationRecord
   has_and_belongs_to_many :actors, join_table: :actor_movies
   has_and_belongs_to_many :producers
   belongs_to :category
+
+  has_many :ratings
+  
   validates :title, presence: true
   validates :release_year, presence: true
   validates :description, presence: true

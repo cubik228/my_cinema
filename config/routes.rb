@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   }
 
   resources :movies do
+    resources :ratings, only: [:index,:create, :update, :destroy]
     member do
       get 'actors'
       get 'producers'
